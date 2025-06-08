@@ -37,7 +37,7 @@ public class WeatherLoaderComponent {
         producer = new KafkaProducer<>(props);
     }
 
-    @Scheduled(fixedRate = 60000) // Cada 60 segundos
+    @Scheduled(fixedRate = 3600000) // Cada 60 segundos
     public void fetchAndSendWeather() {
         try {
             RestTemplate restTemplate = new RestTemplate();
