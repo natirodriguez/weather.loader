@@ -102,7 +102,17 @@
 		    <artifactId>spring-cloud-starter-openfeign</artifactId>
 		    <version>4.2.1</version>
 		</dependency>
-   
+
+	    <!-- Log4j2 API -->
+	    <dependency>
+	        <groupId>org.apache.logging.log4j</groupId>
+	        <artifactId>log4j-api</artifactId>
+	    </dependency>
+	    <!-- Log4j2 Core -->
+	    <dependency>
+	        <groupId>org.apache.logging.log4j</groupId>
+	        <artifactId>log4j-core</artifactId>
+	    </dependency>
 	</dependencies>
 
 	<build>
