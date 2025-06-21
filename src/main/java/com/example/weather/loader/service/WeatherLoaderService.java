@@ -1,24 +1,26 @@
 package com.example.weather.loader.service;
 
+import java.io.FileWriter;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.example.weather.loader.domain.WeatherData;
 import com.example.weather.loader.infraestructure.persistence.WeatherDataRepository;
 import com.example.weather.loader.infraestructure.rest.dto.WeatherDataDTO;
-
 import io.micrometer.common.util.StringUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 @Service
 public class WeatherLoaderService implements IWeatherLoaderService {
 	@Autowired
 	private WeatherDataRepository weatherDataRepository;
+	
+	private static final Logger LOG = LogManager.getLogger(WeatherLoaderService.class);
 
 	@Override
 	public void createWeatherData(WeatherDataDTO request) throws Exception {
@@ -34,12 +36,20 @@ public class WeatherLoaderService implements IWeatherLoaderService {
         weatherData.setTimestamp(request.getTimestamp());
 
         // Guardar en MongoDB
-        weatherDataRepository.save(weatherData);
+        //weatherDataRepository.save(weatherData);
 	}
 	
 	@Override
-	public WeatherData getLastTemperature(String city) {
-        return weatherDataRepository.findTopByCityOrderByTimestampDesc(city);
+	public WeatherData getLastTemperature(String city) throws Exception {
+		
+		try {
+			
+			return weatherDataRepository.findTopByCityOrderByTimestampDesc(city);
+			
+		}catch(Exception e) {
+			LOG.error("Hubo un error al consumir el repositorio de MongoDB", e);
+			throw new Exception("Error al consultar la bdd");
+		}
     }
 	
 	@Override
