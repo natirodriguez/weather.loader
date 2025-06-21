@@ -36,7 +36,7 @@ public class WeatherLoaderService implements IWeatherLoaderService {
         weatherData.setTimestamp(request.getTimestamp());
 
         // Guardar en MongoDB
-        //weatherDataRepository.save(weatherData);
+        weatherDataRepository.save(weatherData);
 	}
 	
 	@Override
