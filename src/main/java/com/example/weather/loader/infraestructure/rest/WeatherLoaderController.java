@@ -1,19 +1,17 @@
 package com.example.weather.loader.infraestructure.rest;
 
 import java.util.List;
-
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.example.weather.loader.domain.WeatherData;
 import com.example.weather.loader.infraestructure.rest.dto.WeatherDataDTO;
 import com.example.weather.loader.service.WeatherLoaderService;
 
 @RestController
 public class WeatherLoaderController {
+	
 	@Autowired
 	private WeatherLoaderService weatherLoaderService;
 	private ModelMapper modelMapper = new ModelMapper();

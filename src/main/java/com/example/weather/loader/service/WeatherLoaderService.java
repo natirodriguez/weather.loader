@@ -17,6 +17,7 @@ import org.apache.logging.log4j.Logger;
 
 @Service
 public class WeatherLoaderService implements IWeatherLoaderService {
+	
 	@Autowired
 	private WeatherDataRepository weatherDataRepository;
 	
