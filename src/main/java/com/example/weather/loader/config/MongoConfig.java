@@ -25,6 +25,7 @@ public class MongoConfig {
         ConnectionString connectionString = new ConnectionString(mongoUri);
 
         MongoClientSettings settings = MongoClientSettings.builder()
+        		
             .applyConnectionString(connectionString)
             .applyToClusterSettings(builder ->
                 builder.serverSelectionTimeout(3, TimeUnit.SECONDS))
